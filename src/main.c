@@ -80,8 +80,8 @@ void app_main(void)
     phy_config.phy_addr = 0;
     phy_config.reset_gpio_num = -1;
     eth_esp32_emac_config_t esp32_emac_config = ETH_ESP32_EMAC_DEFAULT_CONFIG();
-    // esp32_emac_config.smi_mdc_gpio_num = CONFIG_EXAMPLE_ETH_MDC_GPIO;
-    // esp32_emac_config.smi_mdio_gpio_num = CONFIG_EXAMPLE_ETH_MDIO_GPIO;
+    esp32_emac_config.smi_mdc_gpio_num = 23;
+    esp32_emac_config.smi_mdio_gpio_num = 18;
     esp_eth_mac_t *mac = esp_eth_mac_new_esp32(&esp32_emac_config, &mac_config);
     esp_eth_phy_t *phy = esp_eth_phy_new_lan87xx(&phy_config);
     esp_eth_config_t config = ETH_DEFAULT_CONFIG(mac, phy);
