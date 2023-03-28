@@ -17,25 +17,6 @@
 
 static const char *TAG = "eth_example";
 
-#if CONFIG_EXAMPLE_USE_SPI_ETHERNET
-#define INIT_SPI_ETH_MODULE_CONFIG(eth_module_config, num)                                  \
-    do                                                                                      \
-    {                                                                                       \
-        eth_module_config[num].spi_cs_gpio = CONFIG_EXAMPLE_ETH_SPI_CS##num##_GPIO;         \
-        eth_module_config[num].int_gpio = CONFIG_EXAMPLE_ETH_SPI_INT##num##_GPIO;           \
-        eth_module_config[num].phy_reset_gpio = CONFIG_EXAMPLE_ETH_SPI_PHY_RST##num##_GPIO; \
-        eth_module_config[num].phy_addr = CONFIG_EXAMPLE_ETH_SPI_PHY_ADDR##num;             \
-    } while (0)
-
-typedef struct
-{
-    uint8_t spi_cs_gpio;
-    uint8_t int_gpio;
-    int8_t phy_reset_gpio;
-    uint8_t phy_addr;
-} spi_eth_module_config_t;
-#endif
-
 /** Event handler for Ethernet events */
 static void eth_event_handler(void *arg, esp_event_base_t event_base,
                               int32_t event_id, void *event_data)
